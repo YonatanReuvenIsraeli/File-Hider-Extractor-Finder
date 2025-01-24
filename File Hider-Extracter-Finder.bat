@@ -2,7 +2,7 @@
 setlocal
 title File Hider/Extracter/Finder
 echo Program Name: File Hider/Extracter/Finder
-echo Version: 2.0.6
+echo Version: 2.0.7
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -143,8 +143,8 @@ echo Getting "%FindFolder%" details.
 dir "%FindFolder%" /r | find /i /c ":$DATA" > "Find.txt"
 set /p FindNumber=< "Find.txt"
 del "Find.txt" /f /q > nul 2>&1
-if /i "%Find%"=="True" goto "FindDone"
 echo Got "%FindFolder%" details.
+if /i "%Find%"=="True" goto "FindDone"
 if /i "%FindNumber%"=="0" goto "NoFind"
 if /i not "%FindNumber%"=="0" goto "Find3"
 
