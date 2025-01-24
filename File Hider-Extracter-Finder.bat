@@ -1,8 +1,8 @@
 @echo off
 setlocal
-title File Hider/Extracter/Finder
-echo Program Name: File Hider/Extracter/Finder
-echo Version: 2.0.9
+title File Hider/Extractor/Finder
+echo Program Name: File Hider/Extractor/Finder
+echo Version: 2.0.10
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
