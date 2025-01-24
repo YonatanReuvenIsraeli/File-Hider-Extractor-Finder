@@ -2,7 +2,7 @@
 setlocal
 title File Hider/Extracter/Finder
 echo Program Name: File Hider/Extracter/Finder
-echo Version: 2.0.1
+echo Version: 2.0.2
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -125,7 +125,7 @@ goto "Start"
 echo Error! Invalid alternate data stream. Please try again.
 goto "Show1"
 
-:"3"
+:"Find1"
 echo.
 set FindFolder=
 set /p FindFolder="What is the full path to the folder you want to find hidden files that where hidden with this batch file? "
