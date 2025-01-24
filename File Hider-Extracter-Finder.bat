@@ -140,7 +140,7 @@ goto "Find1"
 if exist "Find.txt" goto "FindExist"
 echo.
 echo Getting "%FindFolder%" details.
-dir "%FindFolder%" /r | find /i /c ":$DATA" > "Find.txt"
+dir "%FindFolder%" /r | find /c /i ":$DATA" > "Find.txt"
 set /p FindNumber=< "Find.txt"
 del "Find.txt" /f /q > nul 2>&1
 echo Got "%FindFolder%" details.
