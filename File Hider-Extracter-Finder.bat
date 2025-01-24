@@ -2,7 +2,7 @@
 setlocal
 title File Hider/Extracter/Finder
 echo Program Name: File Hider/Extracter/Finder
-echo Version: 2.0.7
+echo Version: 2.0.8
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -168,7 +168,7 @@ goto "Start"
 
 :"Find3"
 echo.
-dir "%FindFolder%" /r | find /i ":$DATA" > "Find.txt"
+dir "%FindFolder%" /r | find /i ":$DATA"
 goto "Start"
 
 :"4"
