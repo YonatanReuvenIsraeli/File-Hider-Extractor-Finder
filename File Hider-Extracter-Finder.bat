@@ -2,7 +2,7 @@
 setlocal
 title File Hider/Extracter/Finder
 echo Program Name: File Hider/Extracter/Finder
-echo Version: 2.0.5
+echo Version: 2.0.6
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -130,13 +130,13 @@ echo.
 set FindFolder=
 set /p FindFolder="What is the full path to the folder you want to find hidden files that where hidden with this batch file? "
 if not exist "%FindFolder%" goto "FindNotExist"
-goto "Find1"
+goto "Find2"
 
 :"FindNotExist"
 echo %FindFolder%" does not exist! Please try again.
 goto "Find1"
 
-:"Find1"
+:"Find2"
 if exist "Find.txt" goto "FindExist"
 echo.
 echo Getting "%FindFolder%" details.
@@ -146,27 +146,27 @@ del "Find.txt" /f /q > nul 2>&1
 if /i "%Find%"=="True" goto "FindDone"
 echo Got "%FindFolder%" details.
 if /i "%FindNumber%"=="0" goto "NoFind"
-if /i not "%FindNumber%"=="0" goto "Find2"
+if /i not "%FindNumber%"=="0" goto "Find3"
 
 :"FindExist"
 set Find=True
 echo.
 echo Please temporary rename to something else or temporary move to another location "Find.txt" in order for this batch file to proceed. "Find.txt" is not a system file. "Find.txt" is located in the folder you ran this batch file from. Press any key to continue when "Find.txt" is renamed to something else or moved to another location. This batch file will let you know when you can rename it back to its original name or move it back to its original location.
 pause > nul 2>&1
-goto "Find1"
+goto "Find2"
 
 :"FindDone"
 echo.
 echo You can now rename or move back the file back to "Find.txt". Press any key to continue.
 pause > nul 2>&1
 if /i "%FindNumber%"=="0" goto "NoFind"
-if /i not "%FindNumber%"=="0" goto "Find2"
+if /i not "%FindNumber%"=="0" goto "Find3"
 
 :"NoFind"
 echo No files that were hidden with this batch file found in "%FindFolder%"!
 goto "Start"
 
-:"Find2"
+:"Find3"
 echo.
 dir "%FindFolder%" /r | find /i ":$DATA" > "Find.txt"
 goto "Start"
