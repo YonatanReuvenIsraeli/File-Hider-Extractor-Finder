@@ -2,7 +2,7 @@
 setlocal
 title File Hider/Extracter
 echo Program Name: File Hider/Extracter
-echo Version: 1.4.3
+echo Version: 1.4.4
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -63,7 +63,7 @@ goto "Overwrite"
 :"Hide"
 echo.
 echo Creating alternate data stream.
-type "%Hide1%" > "%Hide2%":"%Hide3%" > nul 2>&1
+@type "%Hide1%" > "%Hide2%":"%Hide3%"
 if not "%errorlevel%"=="0" goto "HideError"
 echo Alternate data stream created!
 goto "Start"
