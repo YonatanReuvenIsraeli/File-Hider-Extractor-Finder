@@ -2,7 +2,7 @@
 setlocal
 title File Hider/Extracter/Finder
 echo Program Name: File Hider/Extracter/Finder
-echo Version: 2.0.8
+echo Version: 2.0.9
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -163,10 +163,13 @@ if /i "%FindNumber%"=="0" goto "NoFind"
 if /i not "%FindNumber%"=="0" goto "Find3"
 
 :"NoFind"
+echo.
 echo No files that were hidden with this batch file found in "%FindFolder%"!
 goto "Start"
 
 :"Find3"
+echo.
+echo %FindNumber% hidden files found!
 echo.
 dir "%FindFolder%" /r | find /i ":$DATA"
 goto "Start"
