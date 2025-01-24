@@ -2,7 +2,7 @@
 setlocal
 title File Hider/Extracter
 echo Program Name: File Hider/Extracter
-echo Version: 1.4.1
+echo Version: 1.4.2
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -26,7 +26,7 @@ goto "Start"
 :"Hide1"
 echo.
 set Hide1=
-set /p Hide1="What is the full path to the file are you trying to hide? "
+set /p Hide1="What is the full path of the file are you trying to hide? "
 if not exist "%Hide1%" goto "NotExistHide1"
 goto "Hide2"
 
@@ -37,7 +37,7 @@ goto "Hide1"
 :"Hide2"
 echo.
 set Hide2=
-set /p Hide2="What is the full path to the file that you want to hide "%Hide1%" in? "
+set /p Hide2="What is the full path of the file that you want to hide "%Hide1%" in? "
 if not exist "%Hide2%" goto "NotExistHide2"
 goto "Hide3"
 
@@ -54,7 +54,7 @@ goto "Overwrite"
 :"Overwrite"
 echo.
 set Overwrite=
-set /p Overwrite="This will overwrite an alternate data stream with the same name at "%Hide1%" if it exists. Are you sure you want to continue? (Yes/No) "
+set /p Overwrite="This will overwrite an alternate data stream with the same name (%Hide3%) in "%Hide1%" if it exists. Are you sure you want to continue? (Yes/No) "
 if /i "%Overwrite%"=="Yes" goto "Hide"
 if /i "%Overwrite%"=="No" goto "Start"
 echo Invalid syntax!
@@ -103,7 +103,7 @@ goto "Show3"
 :"Show4"
 echo.
 set Show4=
-set /p Show4="What do you want the extracted file do be named? "
+set /p Show4="What do you want the extracted file to be named? "
 if exist "%Show3%\%Show4%" goto "Show4NotExist"
 goto "Show"
 
