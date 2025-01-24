@@ -2,7 +2,7 @@
 setlocal
 title File Hider/Extractor/Finder
 echo Program Name: File Hider/Extractor/Finder
-echo Version: 2.0.10
+echo Version: 2.0.11
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -130,16 +130,22 @@ echo.
 set FindFolder=
 set /p FindFolder="What is the full path to the folder you want to find hidden files that where hidden with this batch file? "
 if not exist "%FindFolder%" goto "FindNotExist"
-goto "Find2"
+goto "FindSet"
 
 :"FindNotExist"
 echo %FindFolder%" does not exist! Please try again.
 goto "Find1"
 
+:FindSet"
+set Find=
+goto "Find2"
+
 :"Find2"
 if exist "Find.txt" goto "FindExist"
 echo.
 echo Getting "%FindFolder%" details.
+cd /d "%SystemDrive%"
+cd\
 dir "%FindFolder%" /r | find /c /i ":$DATA" > "Find.txt"
 set /p FindNumber=< "Find.txt"
 del "Find.txt" /f /q > nul 2>&1
