@@ -2,7 +2,7 @@
 setlocal
 title File Hider/Extracter/Finder
 echo Program Name: File Hider/Extracter/Finder
-echo Version: 2.0.4
+echo Version: 2.0.5
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -145,8 +145,8 @@ set /p FindNumber=< "Find.txt"
 del "Find.txt" /f /q > nul 2>&1
 if /i "%Find%"=="True" goto "FindDone"
 echo Got "%FindFolder%" details.
-if /i "%Find%"=="0" goto "NoFind"
-if /i not "%Find%"=="0" goto "Find2"
+if /i "%FindNumber%"=="0" goto "NoFind"
+if /i not "%FindNumber%"=="0" goto "Find2"
 
 :"FindExist"
 set Find=True
@@ -159,8 +159,8 @@ goto "Find1"
 echo.
 echo You can now rename or move back the file back to "Find.txt". Press any key to continue.
 pause > nul 2>&1
-if /i "%Find%"=="0" goto "NoFind"
-if /i not "%Find%"=="0" goto "Find2"
+if /i "%FindNumber%"=="0" goto "NoFind"
+if /i not "%FindNumber%"=="0" goto "Find2"
 
 :"NoFind"
 echo No files that were hidden with this batch file found in "%FindFolder%"!
