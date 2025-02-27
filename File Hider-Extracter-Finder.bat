@@ -2,7 +2,7 @@
 title File Hider/Extractor/Finder
 setlocal
 echo Program Name: File Hider/Extractor/Finder
-echo Version: 2.0.15
+echo Version: 2.0.16
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -133,7 +133,7 @@ if not exist "%FindFolder%" goto "FindNotExist"
 goto "FindSet"
 
 :"FindNotExist"
-echo %FindFolder%" does not exist! Please try again.
+echo "%FindFolder%" does not exist! Please try again.
 goto "Find1"
 
 :"FindSet"
