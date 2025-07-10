@@ -2,7 +2,7 @@
 title File Hider/Extractor/Finder
 setlocal
 echo Program Name: File Hider/Extractor/Finder
-echo Version: 2.0.17
+echo Version: 2.0.18
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -118,7 +118,7 @@ echo.
 echo Extracting alternate data stream.
 "%windir%\System32\expand.exe" "%Show1%":"%Show2%" "%Show3%\%Show4%" > nul 2>&1
 if not "%errorlevel%"=="0" goto "ShowError"
-echo Alternate data stream exracted! Your extracted file is at "%Show3%\%Show4%".
+echo Alternate data stream extracted! Your extracted file is at "%Show3%\%Show4%".
 goto "Start"
 
 :"ShowError"
