@@ -2,7 +2,7 @@
 title File Hider/Extractor/Finder
 setlocal
 echo Program Name: File Hider/Extractor/Finder
-echo Version: 2.0.16
+echo Version: 2.0.17
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -157,7 +157,7 @@ if /i not "%FindNumber%"=="0" goto "Find3"
 :"FindExist"
 set Find=True
 echo.
-echo Please temporarily rename to something else or temporarily move to another location "Find.txt" in order for this batch file to proceed. "Find.txt" is not a system file. "Find.txt" is located in the folder you ran this batch file from. Press any key to continue when "Find.txt" is renamed to something else or moved to another location. This batch file will let you know when you can rename it back to its original name or move it back to its original location.
+echo Please temporarily rename to something else or temporarily move to another location "Find.txt" in order for this batch file to proceed. "Find.txt" is not a system file. "Find.txt" is located in the folder "%cd%". Press any key to continue when "Find.txt" is renamed to something else or moved to another location. This batch file will let you know when you can rename it back to its original name or move it back to its original location.
 pause > nul 2>&1
 goto "Find2"
 
