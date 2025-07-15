@@ -2,7 +2,7 @@
 title File Hider/Extractor/Finder
 setlocal
 echo Program Name: File Hider/Extractor/Finder
-echo Version: 2.0.19
+echo Version: 2.0.20
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -163,7 +163,7 @@ goto "Find2"
 
 :"FindDone"
 echo.
-echo You can now rename or move back the file back to "Find.txt". Press any key to continue.
+echo You can now rename or move the file back to "Find.txt". Press any key to continue.
 pause > nul 2>&1
 if /i "%FindNumber%"=="0" goto "NoFind"
 if /i not "%FindNumber%"=="0" goto "Find3"
