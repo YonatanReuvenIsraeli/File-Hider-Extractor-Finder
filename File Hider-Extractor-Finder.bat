@@ -2,7 +2,7 @@
 title File Hider/Extractor/Finder
 setlocal
 echo Program Name: File Hider/Extractor/Finder
-echo Version: 2.0.20
+echo Version: 2.0.21
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -177,7 +177,7 @@ goto "Start"
 echo.
 echo %FindNumber% hidden files found!
 echo.
-dir "%FindFolder%" /r | find /i ":$DATA"
+dir "%FindFolder%" /r | "%windir%\System32\find.exe" /i ":$DATA"
 goto "Start"
 
 :"4"
