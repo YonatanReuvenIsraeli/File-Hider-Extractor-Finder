@@ -2,12 +2,20 @@
 title File Hider/Extractor/Finder
 setlocal
 echo Program Name: File Hider/Extractor/Finder
-echo Version: 2.1.0
+echo Version: 2.1.1
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
 echo Sponsor: https://github.com/sponsors/YonatanReuvenIsraeli
+"%windir%\System32\net.exe" session > nul 2>&1
+if not "%errorlevel%"=="0" goto "NotAdministrator"
 goto "Start"
+
+:"NotAdministrator"
+echo.
+echo Please run this batch file as an administrator. Press any key to close this batch file.
+pause > nul 2>&1
+goto "Done"
 
 :"Start"
 echo.
@@ -21,7 +29,7 @@ set /p Input="What do you want to do? (1-4) "
 if /i "%Input%"=="1" goto "Hide1"
 if /i "%Input%"=="2" goto "Show1"
 if /i "%Input%"=="3" goto "Find1"
-if /i "%Input%"=="4" goto "4"
+if /i "%Input%"=="4" goto "Done"
 echo Invalid syntax!
 goto "Start"
 
@@ -141,13 +149,12 @@ set Find=
 goto "Find2"
 
 :"Find2"
-if exist "Find.txt" goto "FindExist"
-echo.
-echo Getting "%FindFolder%" details.
 cd /d "%SystemDrive%"
 cd\
+echo.
+echo Getting "%FindFolder%" details.
+if exist "Find.txt" goto "FindExist"
 dir "%FindFolder%" /r | "%windir%\System32\find.exe" /c /i ":$DATA" > "Find.txt"
-if not "%errorlevel%"=="0" goto "FindError"
 set /p FindNumber=< "Find.txt"
 del "Find.txt" /f /q > nul 2>&1
 echo Got "%FindFolder%" details.
@@ -179,13 +186,8 @@ echo.
 echo %FindNumber% hidden files found!
 echo.
 dir "%FindFolder%" /r | "%windir%\System32\find.exe" /i ":$DATA"
-if not "%errorlevel%"=="0" goto "FindError"
 goto "Start"
 
-:"FindError"
-echo There has been an error! You can try running this batch file as administrator.
-goto "Start"
-
-:"4"
+:"Done"
 endlocal
 exit
