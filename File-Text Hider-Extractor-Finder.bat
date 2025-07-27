@@ -2,7 +2,7 @@
 title File/Text Hider/Extractor/Finder
 setlocal
 echo Program Name: File/Text Hider/Extractor/Finder
-echo Version: 3.0.2
+echo Version: 3.0.3
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -19,9 +19,9 @@ goto "Done"
 
 :"Start"
 echo.
-echo [1] Hide file.
-echo [2] Extract file.
-echo [3] Find files.
+echo [1] Hide file/text.
+echo [2] Extract file/text.
+echo [3] Find files that have hidden files/text.
 echo [4] Close.
 echo.
 set Input=
