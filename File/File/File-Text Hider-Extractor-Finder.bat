@@ -122,7 +122,7 @@ if /i "%ShowFileText%"=="Text" goto "Show"
 :"ShowFolder"
 echo.
 set ShowFolder=
-set /p Show3="What do you want the full path to the folder of the extracted file to be? "
+set /p ShowFolder="What do you want the full path to the folder of the extracted file to be? "
 if not exist "%ShowFolder%" goto "ShowFolderNotExist"
 goto "FileName"
 
@@ -134,10 +134,10 @@ goto "ShowFolder"
 echo.
 set FileName=
 set /p FileName="What do you want the extracted file to be named? "
-if exist "%ShowFolder%\%FileName%" goto "FileNameNotExist"
+if exist "%ShowFolder%\%FileName%" goto "FileNameExist"
 goto "Show"
 
-:"FileNameNotExist"
+:"FileNameExist"
 echo "%ShowFolder%\%FileName%" already exists! Please rename "%ShowFolder%\%FileName%" or move "%ShowFolder%\%FileName%" to another location and try again.
 goto "FileName"
 
