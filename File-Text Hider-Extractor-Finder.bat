@@ -2,7 +2,7 @@
 title File/Text Hider/Extractor/Finder
 setlocal
 echo Program Name: File/Text Hider/Extractor/Finder
-echo Version: 3.0.1
+echo Version: 3.0.2
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -146,8 +146,9 @@ echo.
 echo Extracting alternate data stream.
 if /i "%ShowFileText%"=="File" "%windir%\System32\expand.exe" "%ShowPath%":"%ShowStreamName%" "%ShowFolder%\%FileName%" > nul 2>&1
 if /i "%ShowFileText%"=="Text" "%windir%\System32\more.com" < "%ShowPath%":"%ShowStreamName%"
-if not "%errorlevel%"=="0" goto "ShowError"
-echo Alternate data stream extracted! Your extracted file is at "%ShowFolder%\%FileName%".
+if /i "%ShowFileText%"=="File" if not "%errorlevel%"=="0" goto "ShowError"
+if /i "%ShowFileText%"=="File" echo Alternate data stream extracted! Your extracted file is at "%ShowFolder%\%FileName%".
+if /i "%ShowFileText%"=="Text" echo Alternate data stream extracted if "%ShowPath%":"%ShowStreamName%" exists!
 goto "Start"
 
 :"ShowError"
