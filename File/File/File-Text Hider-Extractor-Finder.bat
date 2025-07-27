@@ -62,7 +62,7 @@ goto "HideFileIn"
 echo.
 set HideFileIn=
 if /i "%HideFileText%"=="File" set /p HideFileIn="What is the full path of the file that you want to hide "%HideFile%" in? "
-if /i "%HideFileText%"=="Text" set /p HideFileIn="What is the full path of the file that you want to your text in? "
+if /i "%HideFileText%"=="Text" set /p HideFileIn="What is the full path of the file that you want to hide your text in? "
 goto "HideStreamName"
 
 :"HideStreamName"
