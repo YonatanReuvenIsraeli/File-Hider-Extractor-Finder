@@ -2,7 +2,7 @@
 title File/Text Hider/Extractor/Finder
 setlocal
 echo Program Name: File/Text Hider/Extractor/Finder
-echo Version: 3.0.0
+echo Version: 3.0.1
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
