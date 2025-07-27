@@ -74,7 +74,7 @@ goto "Overwrite"
 :"Overwrite"
 echo.
 set Overwrite=
-set /p Overwrite="This will overwrite an alternate data stream with the same name (%StreamName%) in "%HideFileIn%" if it exists. Are you sure you want to continue? (Yes/No) "
+set /p Overwrite="This will overwrite an alternate data stream with the same name (%HideStreamName%) in "%HideFileIn%" if it exists. Are you sure you want to continue? (Yes/No) "
 if /i "%Overwrite%"=="Yes" goto "Hide"
 if /i "%Overwrite%"=="No" goto "Start"
 echo Invalid syntax!
@@ -133,13 +133,13 @@ goto "ShowFolder"
 :"FileName"
 echo.
 set FileName=
-set /p Show4="What do you want the extracted file to be named? "
+set /p FileName="What do you want the extracted file to be named? "
 if exist "%ShowFolder%\%FileName%" goto "FileNameNotExist"
 goto "Show"
 
 :"FileNameNotExist"
 echo "%ShowFolder%\%FileName%" already exists! Please rename "%ShowFolder%\%FileName%" or move "%ShowFolder%\%FileName%" to another location and try again.
-goto "Show4"
+goto "FileName"
 
 :"Show"
 echo.
