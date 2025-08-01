@@ -2,7 +2,7 @@
 title File/Text Hider/Extractor/Finder
 setlocal
 echo Program Name: File/Text Hider/Extractor/Finder
-echo Version: 3.0.3
+echo Version: 3.0.4
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -27,7 +27,7 @@ echo.
 set Input=
 set /p Input="What do you want to do? (1-4) "
 if /i "%Input%"=="1" goto "HideFileText"
-if /i "%Input%"=="2" goto "ShowFileText"
+if /i "%Input%"=="2" goto "ExtractFileText"
 if /i "%Input%"=="3" goto "FindFolder"
 if /i "%Input%"=="4" goto "Done"
 echo Invalid syntax!
@@ -93,67 +93,67 @@ goto "Start"
 echo There has been an error! You can try again.
 goto "Start"
 
-:"ShowFileText"
+:"ExtractFileText"
 echo.
-set ShowFileText=
-set /p ShowFileText="Are you trying to show a file or text? (File/Text) "
-if /i "%ShowFileText%"=="File" goto "ShowPath"
-if /i "%ShowFileText%"=="Text" goto "ShowPath"
-goto "ShowFileText"
+set ExtractFileText=
+set /p ExtractFileText="Are you trying to extract a file or text? (File/Text) "
+if /i "%ExtractFileText%"=="File" goto "ExtractPath"
+if /i "%ExtractFileText%"=="Text" goto "ExtractPath"
+goto "ExtractFileText"
 
-:"ShowPath"
+:"ExtractPath"
 echo.
-set ShowPath=
-set /p ShowPath="What is the full path to the file that the alternate data stream is hidden in? "
-if not exist "%ShowPath%" goto "NotExistShowPath"
-goto "ShowStreamName"
+set ExtractPath=
+set /p ExtractPath="What is the full path to the file that the alternate data stream is hidden in? "
+if not exist "%ExtractPath%" goto "NotExistExtractPath"
+goto "ExtractStreamName"
 
-:"NotExistShowPath"
-echo "%ShowPath%" does not exist! Please try again.
-goto "ShowPath"
+:"NotExistExtractPath"
+echo "%ExtractPath%" does not exist! Please try again.
+goto "ExtractPath"
 
-:"ShowStreamName"
+:"ExtractStreamName"
 echo.
-set ShowStreamName=
-set /p ShowStreamName="What is the name of the alternate data stream? "
-if /i "%ShowFileText%"=="File" goto "ShowFolder"
-if /i "%ShowFileText%"=="Text" goto "Show"
+set ExtractStreamName=
+set /p ExtractStreamName="What is the name of the alternate data stream? "
+if /i "%ExtractFileText%"=="File" goto "ExtractFolder"
+if /i "%ExtractFileText%"=="Text" goto "Extract"
 
-:"ShowFolder"
+:"ExtractFolder"
 echo.
-set ShowFolder=
-set /p ShowFolder="What do you want the full path to the folder of the extracted file to be? "
-if not exist "%ShowFolder%" goto "ShowFolderNotExist"
+set ExtractFolder=
+set /p ExtractFolder="What do you want the full path to the folder of the extracted file to be? "
+if not exist "%ExtractFolder%" goto "ExtractFolderNotExist"
 goto "FileName"
 
-:"ShowFolderNotExist"
+:"ExtractFolderNotExist"
 echo Error! Folder not found. Please try again.
-goto "ShowFolder"
+goto "ExtractFolder"
 
 :"FileName"
 echo.
 set FileName=
 set /p FileName="What do you want the extracted file to be named? "
-if exist "%ShowFolder%\%FileName%" goto "FileNameExist"
-goto "Show"
+if exist "%ExtractFolder%\%FileName%" goto "FileNameExist"
+goto "Extract"
 
 :"FileNameExist"
-echo "%ShowFolder%\%FileName%" already exists! Please rename "%ShowFolder%\%FileName%" or move "%ShowFolder%\%FileName%" to another location and try again.
+echo "%ExtractFolder%\%FileName%" already exists! Please rename "%ExtractFolder%\%FileName%" or move "%ExtractFolder%\%FileName%" to another location and try again.
 goto "FileName"
 
-:"Show"
+:"Extract"
 echo.
 echo Extracting alternate data stream.
-if /i "%ShowFileText%"=="File" "%windir%\System32\expand.exe" "%ShowPath%":"%ShowStreamName%" "%ShowFolder%\%FileName%" > nul 2>&1
-if /i "%ShowFileText%"=="Text" "%windir%\System32\more.com" < "%ShowPath%":"%ShowStreamName%"
-if /i "%ShowFileText%"=="File" if not "%errorlevel%"=="0" goto "ShowError"
-if /i "%ShowFileText%"=="File" echo Alternate data stream extracted! Your extracted file is at "%ShowFolder%\%FileName%".
-if /i "%ShowFileText%"=="Text" echo Alternate data stream extracted if "%ShowPath%":"%ShowStreamName%" exists!
+if /i "%ExtractFileText%"=="File" "%windir%\System32\expand.exe" "%ExtractPath%":"%ExtractStreamName%" "%ExtractFolder%\%FileName%" > nul 2>&1
+if /i "%ExtractFileText%"=="Text" "%windir%\System32\more.com" < "%ExtractPath%":"%ExtractStreamName%"
+if /i "%ExtractFileText%"=="File" if not "%errorlevel%"=="0" goto "ExtractError"
+if /i "%ExtractFileText%"=="File" echo Alternate data stream extracted! Your extracted file is at "%ExtractFolder%\%FileName%".
+if /i "%ExtractFileText%"=="Text" echo Alternate data stream extracted if "%ExtractPath%":"%ExtractStreamName%" exists!
 goto "Start"
 
-:"ShowError"
+:"ExtractError"
 echo Error! Invalid alternate data stream. Please try again.
-goto "ShowFileText"
+goto "ExtractFileText"
 
 :"FindFolder"
 echo.
